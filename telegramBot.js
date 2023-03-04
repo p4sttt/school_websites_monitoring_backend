@@ -10,7 +10,7 @@ console.log("bot working");
 
 bot.setMyCommands([
   { command: "/start", description: "Начало работы" },
-  { command: "/websites", description: "Доступность университетов" },
+  { command: "/websites", description: "Доступность сайтов" },
   { command: "/auth", description: "Авторизация" },
   { command: "/cancelnotifications", description: "Отключить оповещение" },
   { command: "/setnotifications", description: "Включить оповещение" },
@@ -23,7 +23,7 @@ async function start(chat) {
   );
   return await bot.sendMessage(
     chat.id,
-    "**Добро пожаложвать!**\n \nНапишите `/auth Email Password` чтобы авторизоваться\n \nИли просто напишите `/websites` чтобы посмотреть информация о работоспособности ВУЗов",
+    "**Добро пожаложвать!**\n \nНапишите `/auth Email Password` чтобы авторизоваться\n \nИли просто напишите `/websites` чтобы посмотреть информация о работоспособности сайтов",
     {
       parse_mode: "Markdown",
     }
