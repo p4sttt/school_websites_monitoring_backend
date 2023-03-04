@@ -12,7 +12,8 @@ const User = new Schema({
     unique: false,
     default: null,
   },
-  blockedSites: [{ type: String, ref: "Website" }],
+  blockedSites: [{ type: String, required: true, unique: true }],
+  isAdmin: {type: Boolean, default: false}
 });
 
 module.exports = mongoose.model("User", User);

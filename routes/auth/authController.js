@@ -24,10 +24,15 @@ module.exports = class authController {
       await user.save();
       const id = user._id;
       const userName = user.name;
-      const token = jwt.sign({ name: userName, id: id }, process.env.JWT_KEY, {
-        expiresIn: "48h",
-      });
-      return res.status(200).json({ token: token, name: userName });
+      const isAdmin = user.isAdmin;
+      const token = jwt.sign(
+        { name: userName, id: id, isAdmin: isAdmin },
+        process.env.JWT_KEY,
+        {
+          expiresIn: "48h",
+        }
+      );
+      return res.status(200).json({ token: token, name: userName, isAdmin: isAdmin });
     } catch (error) {
       res.status(400).json({ message: "Что-то пошло не так :(" });
     }
@@ -51,10 +56,15 @@ module.exports = class authController {
       }
       const id = user._id;
       const userName = user.name;
-      const token = jwt.sign({ name: userName, id: id }, process.env.JWT_KEY, {
-        expiresIn: "48h",
-      });
-      return res.status(200).json({ token: token, name: userName });
+      const isAdmin = user.isAdmin;
+      const token = jwt.sign(
+        { name: userName, id: id, isAdmin: isAdmin },
+        process.env.JWT_KEY,
+        {
+          expiresIn: "48h",
+        }
+      );
+      return res.status(200).json({ token: token, name: userName, isAdmin: isAdmin });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Что-то пошло не так :(" });

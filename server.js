@@ -1,10 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const job = require("./scheludeTask");
-
-require("dotenv").config();
 
 const app = express();
 app.use(
@@ -17,9 +16,11 @@ app.use(express.json());
 //routes
 const authRouter = require("./routes/auth/authRouter")
 const webRouter = require("./routes/website/webRouter")
+const userRouter = require("./routes/user/userRouter")
 app.get("/", (req, res) => res.json({ succes: true }));
 app.use("/api/auth", authRouter)
 app.use("/api/website", webRouter)
+app.use("/api/user", userRouter)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
