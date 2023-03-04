@@ -14,13 +14,15 @@ app.use(
 app.use(express.json());
 
 //routes
-const authRouter = require("./routes/auth/authRouter")
-const webRouter = require("./routes/website/webRouter")
-const userRouter = require("./routes/user/userRouter")
+const authRouter = require("./routes/auth/authRouter");
+const webRouter = require("./routes/website/webRouter");
+const userRouter = require("./routes/user/userRouter");
+const adminRouter = require("./routes/admin/adminRouter");
 app.get("/", (req, res) => res.json({ succes: true }));
-app.use("/api/auth", authRouter)
-app.use("/api/website", webRouter)
-app.use("/api/user", userRouter)
+app.use("/api/auth", authRouter);
+app.use("/api/website", webRouter);
+app.use("/api/user", userRouter);
+app.use("/api/admin", adminRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
