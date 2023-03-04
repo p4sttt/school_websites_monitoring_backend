@@ -29,10 +29,11 @@ router.post(
   controller.addComment
 )
 
+//rating
 router.post(
   "/addRating",
   [
-    body("rating").isNumeric().isLength({min: 1, max: 5}),
+    body("rating").isNumeric().isLength({max: 1}),
     body("websiteId").notEmpty().isMongoId()
   ],
   authMiddleware,
